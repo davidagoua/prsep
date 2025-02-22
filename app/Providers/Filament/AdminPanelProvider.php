@@ -43,14 +43,20 @@ class AdminPanelProvider extends PanelProvider
             ->navigationGroups([
 
                 NavigationGroup::make()
+                    ->label("Analyses")
+                    ->icon('heroicon-o-document-magnifying-glass'),
+                NavigationGroup::make()
                     ->label("Planification")
-                    ->icon('heroicon-s-user'),
+                    ->icon('heroicon-o-calculator'),
                 NavigationGroup::make()
                     ->label("Suivie & Evaluation")
                     ->icon('heroicon-s-user'),
                 NavigationGroup::make()
                     ->label("Gestion Véhicule")
                     ->icon('heroicon-s-user'),
+                NavigationGroup::make()
+                    ->label("Rapportage")
+                    ->icon('heroicon-o-file'),
             ])
             ->colors([
                 'primary'=>'#3498db'
