@@ -55,6 +55,8 @@ class AdminPanelProvider extends PanelProvider
             ->colors([
                 'primary'=>'#3498db'
             ])
+
+            ->viteTheme('resources/css/filament/admin/theme.css')
             ->middleware([
                 EncryptCookies::class,
                 AddQueuedCookiesToResponse::class,
@@ -66,9 +68,12 @@ class AdminPanelProvider extends PanelProvider
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
             ])
-            ->viteTheme('resources/css/filament/admin/theme.css')
+            ->plugins([
+                \BezhanSalleh\FilamentShield\FilamentShieldPlugin::make(),
+            ])
             ->authMiddleware([
                 Authenticate::class,
             ]);
+
     }
 }
