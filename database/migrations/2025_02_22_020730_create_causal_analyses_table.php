@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('causal_analyses', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->unsignedBigInteger('central_issue_id');
+            $table->unsignedBigInteger('central_issue_id')->nullable();
             $table->longText('causes_immediate')->nullable();
             $table->longText('causes_sjacent')->nullable();
             $table->longText('causes_struct')->nullable();

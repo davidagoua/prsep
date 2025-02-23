@@ -7,6 +7,11 @@
 }
 
  */
+
+.fi-topbar{
+    background-color: #3498db ;
+    color: white;
+}
 .fi-sidebar-item-label{
     color: #3498db !important;
 }

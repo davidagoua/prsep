@@ -34,6 +34,7 @@
             @endphp
 
             <x-filament-panels::header
+                class="bg-white py-2 px-3 border rounded-md"
                 :actions="$this->getCachedHeaderActions()"
                 :breadcrumbs="filament()->hasBreadcrumbs() ? $this->getBreadcrumbs() : []"
                 :heading="$heading"
