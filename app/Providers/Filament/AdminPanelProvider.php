@@ -52,11 +52,11 @@ class AdminPanelProvider extends PanelProvider
                     ->label("Suivie & Evaluation")
                     ->icon('heroicon-s-user'),
                 NavigationGroup::make()
-                    ->label("Gestion Véhicule")
-                    ->icon('heroicon-s-user'),
-                NavigationGroup::make()
                     ->label("Rapportage")
-                    ->icon('heroicon-o-file'),
+                    ->icon('heroicon-o-rectangle-stack'),
+                NavigationGroup::make()
+                    ->label("Gestion Véhicule")
+                    ->icon('heroicon-s-truck'),
             ])
             ->colors([
                 'primary'=>'#3498db'

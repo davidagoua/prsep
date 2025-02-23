@@ -7,10 +7,19 @@
 }
 
  */
-
+.fi-sidebar-header{
+    background-color: orange;
+    color: white !important;
+}
 .fi-topbar{
-    background-color: #3498db ;
+    background: linear-gradient(to right, orange, white, green) !important;
     color: white;
+}
+.fi-logo{
+    color: white !important;
+}
+.fi-topbar > nav {
+    background-color: transparent;
 }
 .fi-sidebar-item-label{
     color: #3498db !important;
