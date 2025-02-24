@@ -41,19 +41,24 @@ class AdminPanelProvider extends PanelProvider
                 Widgets\AccountWidget::class,
             ])
             ->navigationGroups([
-
-                NavigationGroup::make()
-                    ->label("Analyses")
-                    ->icon('heroicon-o-document-magnifying-glass'),
                 NavigationGroup::make()
                     ->label("Planification")
                     ->icon('heroicon-o-calculator'),
                 NavigationGroup::make()
                     ->label("Suivie & Evaluation")
-                    ->icon('heroicon-s-user'),
+                    ->icon('heroicon-o-clipboard-document-check'),
                 NavigationGroup::make()
                     ->label("Rapportage")
                     ->icon('heroicon-o-rectangle-stack'),
+                NavigationGroup::make()
+                    ->label("Cartographie")
+                    ->icon('heroicon-o-map'),
+                NavigationGroup::make()
+                    ->label("Analyses")
+                    ->icon('heroicon-o-document-magnifying-glass'),
+
+
+
                 NavigationGroup::make()
                     ->label("Gestion Véhicule")
                     ->icon('heroicon-s-truck'),

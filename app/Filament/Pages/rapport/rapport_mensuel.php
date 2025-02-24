@@ -3,6 +3,7 @@
 namespace App\Filament\Pages\rapport;
 
 use App\Models\RapportMensuel;
+use Faker\Core\File;
 use Filament\Actions\Action;
 use Filament\Facades\Filament;
 use Filament\Forms\Components\FileUpload;
@@ -73,10 +74,14 @@ class rapport_mensuel extends Page implements  HasTable
             ->action(function($record){
                 return response()->download($record->file, $record->titre.'docx');
             }),
-            \Filament\Tables\Actions\Action::make('exporter')
+            \Filament\Tables\Actions\Action::make('importer')
                 ->action(function($record){
                     return response()->download($record->file, $record->titre.'docx');
-                }),
+                })
+                ->icon("")
+                ->form([
+                    FileUpload::make('file')->label("Fichier")
+                ]),
             \Filament\Tables\Actions\Action::make('soumettre')
                 ->button()
                 ->action(function($record){

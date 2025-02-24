@@ -7,6 +7,7 @@ use Filament\Pages\Page;
 class cartographie extends Page
 {
     protected static ?string $navigationIcon = 'heroicon-o-map';
+    protected static bool $shouldRegisterNavigation = false;
     protected static ?string $title = 'Cartographie';
     protected static string $view = 'filament.pages.cartographie';
 }

@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('analyse_swot', function (Blueprint $table) {
+        Schema::create('decaissements', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('categorie');
-            $table->string('facteur');
-            $table->longText('consequence')->nullable();
+
         });
     }
 
@@ -25,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('analyse_swot');
+        Schema::dropIfExists('decaissements');
     }
 };

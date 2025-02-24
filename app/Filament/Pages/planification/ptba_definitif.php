@@ -42,7 +42,7 @@ class ptba_definitif extends Page implements HasTable
                 ->label("Exporter")
                 ->action(function(){
                     $file_name = "PTBA_definitif_2025.xlsx";
-                    /*
+
                     $rlds_init = Rld::query()->with([
                         'ild',
                        'departement',
@@ -59,11 +59,11 @@ class ptba_definitif extends Page implements HasTable
                     ])
                     ->groupBy(['ILD'])
                     ->toArray();
-                    */
+
                     //dd($rlds);
 
                     $writer = SimpleExcelWriter::streamDownload($file_name);
-                    /*
+
                     $writer->addRow([
                         '',
                         'Montant total du Financement',
@@ -84,7 +84,7 @@ class ptba_definitif extends Page implements HasTable
                         ]);
                         $writer->addRows($rldss->toArray());
                     }
-                    */
+
                     $writer->toBrowser();
                 }),
 

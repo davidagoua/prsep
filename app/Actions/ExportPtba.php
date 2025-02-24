@@ -13,7 +13,7 @@ class ExportPtba
     public function handle()
     {
         $file_name = "PTBA_definitif_2025.xlsx";
-        /*
+
         $rlds_init = Rld::query()->with([
             'ild',
            'departement',
@@ -30,11 +30,11 @@ class ExportPtba
         ])
         ->groupBy(['ILD'])
         ->toArray();
-        */
+
         //dd($rlds);
 
         $writer = SimpleExcelWriter::streamDownload($file_name);
-        /*
+
         $writer->addRow([
             '',
             'Montant total du Financement',
@@ -55,7 +55,7 @@ class ExportPtba
             ]);
             $writer->addRows($rldss->toArray());
         }
-        */
+
         $writer->toBrowser();
 
     }
