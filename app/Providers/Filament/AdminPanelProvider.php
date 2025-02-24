@@ -61,7 +61,8 @@ class AdminPanelProvider extends PanelProvider
             ->colors([
                 'primary'=>'#3498db'
             ])
-
+            ->brandLogo(asset('img/logo.png'))
+            ->brandLogoHeight('70px')
             ->viteTheme('resources/css/filament/admin/theme.css')
             ->middleware([
                 EncryptCookies::class,
