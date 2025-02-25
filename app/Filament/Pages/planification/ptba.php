@@ -74,13 +74,13 @@ class ptba extends Page implements HasTable
     public function getTableActions(): array
     {
         return [
-          \Filament\Tables\Actions\Action::make('exporter')
+          \Filament\Tables\Actions\Action::make('exporter')->label("Télécharger")
             ->icon('heroicon-o-arrow-down-on-square')
             ->action(function($record){
                 return response()
                     ->download($record->file, $record->departement->nom.'_ptba.xlsx');
             }),
-            \Filament\Tables\Actions\Action::make('importer')
+            \Filament\Tables\Actions\Action::make('importer')->label("Joindre")
                 ->hidden(fn($record) => $record->status > 20)
                 ->icon('heroicon-o-arrow-up-on-square')
                     ->form([

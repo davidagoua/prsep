@@ -41,51 +41,7 @@ class ptba_definitif extends Page implements HasTable
                 ->icon('heroicon-s-arrow-down-tray')
                 ->label("Exporter")
                 ->action(function(){
-                    $file_name = "PTBA_definitif_2025.xlsx";
-
-                    $rlds_init = Rld::query()->with([
-                        'ild',
-                       'departement',
-                       'ptba' => function ($query) {
-                            $query->where('status', '>=', '30');
-                       }
-                    ]);
-
-                    $rlds = $rlds_init->get()->map(fn ($rld) => [
-                        'ILD'=>$rld->ild->titre,
-                        'RLD' => $rld->titre,
-                        'name' => $rld->name,
-                        'Categorie des dépenses' => $rld->categorie,
-                    ])
-                    ->groupBy(['ILD'])
-                    ->toArray();
-
-                    //dd($rlds);
-
-                    $writer = SimpleExcelWriter::streamDownload($file_name);
-
-                    $writer->addRow([
-                        '',
-                        'Montant total du Financement',
-                        'SUIVI PTBA 2025'
-                    ]);
-
-                    $writer->addRow([
-                        '',
-                        $rlds_init->sum('montant').' FCFA',
-                        ''
-                    ]);
-
-                    foreach ($rlds as $ild => $rldss) {
-                        $writer->addRow([
-                            '',
-                            $ild,
-                            ''
-                        ]);
-                        $writer->addRows($rldss->toArray());
-                    }
-
-                    $writer->toBrowser();
+                    return ExportPtba::run();
                 }),
 
         ];
@@ -115,19 +71,19 @@ class ptba_definitif extends Page implements HasTable
     public function getTableActions(): array
     {
         return [
-            \Filament\Tables\Actions\Action::make('exporter')
+            \Filament\Tables\Actions\Action::make('exporter')->label("Télécharger")
                 ->icon('heroicon-o-arrow-down-on-square')
                 ->action(function($record){
                     return response()
                         ->download($record->file, $record->departement->nom.'_ptba.xlsx');
                 }),
-            \Filament\Tables\Actions\Action::make('importer')
+            \Filament\Tables\Actions\Action::make('importer')->label("Joindre")
                 ->icon('heroicon-o-arrow-up-on-square')
                 ->hidden(fn($record) => $record->status > 20)
                 ->form([
                     FileUpload::make('file')->label("PTBA arbitré")
                 ])
-                ->action(function($data){
+                ->action(function($data, $record){
                     $excel = SimpleExcelReader::create(storage_path('app/public/'.$data['file']));
 
                     $ptba = \App\Models\Ptba::query()->updateOrCreate(
@@ -166,12 +122,16 @@ class ptba_definitif extends Page implements HasTable
                         ]);
                     }
 
-                    Notification::make()->success()->title("PTBA Mofifier")->send();
+                    Notification::make()->success()->title("PTBA Modifié")->send();
                 }),
             \Filament\Tables\Actions\Action::make('Soumettre')
                 ->button()
                 ->hidden(fn($record) => $record->status != 20)
                 ->action(fn($record) => $record->update(['status'=>'30'])),
+            \Filament\Tables\Actions\Action::make('Reviser')
+                ->button()
+                ->hidden(fn($record) => $record->status < 30)
+                ->action(fn($record) => $record->update(['status'=>'20'])),
             DeleteAction::make('supprimer')->iconButton()
         ];
     }

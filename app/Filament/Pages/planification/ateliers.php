@@ -8,6 +8,8 @@ class ateliers extends Page
 {
     protected static ?string $navigationLabel = "Ateliers";
     protected static ?string $title = "Ateliers";
+    protected static bool $shouldRegisterNavigation = false;
+
     protected static ?string $navigationGroup = "Planification";
     protected static ?int $navigationSort = 20;
 

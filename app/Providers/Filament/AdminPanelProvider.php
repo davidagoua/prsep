@@ -45,7 +45,7 @@ class AdminPanelProvider extends PanelProvider
                     ->label("Planification")
                     ->icon('heroicon-o-calculator'),
                 NavigationGroup::make()
-                    ->label("Suivie & Evaluation")
+                    ->label("Suivi & Evaluation")
                     ->icon('heroicon-o-clipboard-document-check'),
                 NavigationGroup::make()
                     ->label("Rapportage")
@@ -56,12 +56,17 @@ class AdminPanelProvider extends PanelProvider
                 NavigationGroup::make()
                     ->label("Analyses")
                     ->icon('heroicon-o-document-magnifying-glass'),
-
-
-
                 NavigationGroup::make()
                     ->label("Gestion Véhicule")
                     ->icon('heroicon-s-truck'),
+                NavigationGroup::make()
+                    ->label("Paramètres")
+
+                    ->icon('heroicon-o-cog'),
+
+
+
+
             ])
             ->colors([
                 'primary'=>'#3498db'
