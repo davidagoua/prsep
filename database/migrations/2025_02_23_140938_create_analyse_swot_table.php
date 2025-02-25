@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('analyse_swot', function (Blueprint $table) {
+        Schema::create('analyse_swots', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table->string('categorie');
